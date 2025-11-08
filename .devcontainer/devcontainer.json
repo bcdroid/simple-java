@@ -4,15 +4,12 @@
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "21",
-      "installGradle": "true",
+      "installGradle": "false",
       "installMaven": "true",
       "mavenVersion": "3.9.9"
     },
     "ghcr.io/devcontainers/features/sshd:1": {
         "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "latest"
     }
   },
   "remoteUser": "vscode",
@@ -24,14 +21,13 @@
         "vscjava.vscode-maven",
         "vscjava.vscode-java-test",
         "vscjava.vscode-java-dependency",
-        "editorconfig.editorconfig",
-        "eamodio.gitlens"
+        "editorconfig.editorconfig"
       ],
       "settings": {
         "java.configuration.runtimes": [
           { "name": "JavaSE-21", "path": "/usr/lib/jvm/msopenjdk-current", "default": true }
         ],
-        "java.import.gradle.enabled": true,
+        "java.import.gradle.enabled": false,
         "java.import.maven.enabled": true,
         "maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn",
         "files.eol": "\n",
@@ -39,8 +35,5 @@
       }
     }
   },
-  "secrets": { 
-    "OPENAI_API_KEY": { "description": "OpenAI API key" } 
-  },
-  "postCreateCommand": "bash .devcontainer/setup.sh && java -version && mvn -v"
+  "postCreateCommand": "java -version && mvn -v"
 }
