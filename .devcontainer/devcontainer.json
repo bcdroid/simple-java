@@ -1,0 +1,46 @@
+{
+  "name": "Java 21",
+  "image": "mcr.microsoft.com/devcontainers/java:21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installGradle": "true",
+      "installMaven": "true",
+      "mavenVersion": "3.9.9"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "latest"
+    }
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-java-dependency",
+        "editorconfig.editorconfig",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "java.configuration.runtimes": [
+          { "name": "JavaSE-21", "path": "/usr/lib/jvm/msopenjdk-current", "default": true }
+        ],
+        "java.import.gradle.enabled": true,
+        "java.import.maven.enabled": true,
+        "maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn",
+        "files.eol": "\n",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "secrets": { 
+    "OPENAI_API_KEY": { "description": "OpenAI API key" } 
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh && java -version && mvn -v"
+}
